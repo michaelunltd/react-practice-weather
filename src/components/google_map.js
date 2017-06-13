@@ -1,15 +1,23 @@
-import React, {Componenet} from 'react';
+import React, { Component } from 'react';
 
 class GoogleMap extends Component {
     componentDidMount() {
-        new google.maps.Map(this.refs.map, {
+        console.log("DID MOUNT GOOGLE MAP");
+        console.log(`lat from mount: ${this.props.lat}`);
+        console.log(`lon from mount: ${this.props.lon}`);
+        const map = new google.maps.Map(this.refs.map, {
             zoom: 12,
-            lat: this.props.lat,
-            lng: this.props.lon
-        })
+            center: {
+                lat: this.props.lat,
+                lng: this.props.lon
+            }
+        });
+
+        console.log(`This is the map: ${map}`);
     }
     render() {
-        return <div ref="map"></div>
+        console.log("RENDERING GOOGLE MAP");
+        return <div ref="map" />;
     }
 }
 
